@@ -1,0 +1,10 @@
+.gameBlock {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border: 1px solid black;
+}
+
+.blockNoClicked {
+    background-color: #4d0068;
+}

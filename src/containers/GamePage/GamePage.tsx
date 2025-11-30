@@ -1,8 +1,10 @@
+import GameField from "../../components/GameField/GameField.tsx";
+
 const GamePage = () => {
     return (
-        <div>
-
-        </div>
+        <>
+            <GameField/>
+        </>
     );
 };
 
