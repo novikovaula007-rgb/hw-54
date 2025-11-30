@@ -2,10 +2,12 @@ import './GameBlock.css'
 
 interface Props {
     hasItem: boolean,
-    clicked: boolean
+    clicked: boolean,
+    clickBlock: React.MouseEventHandler
+    id: number
 }
 
-const GameBlock: React.FC<Props> = ({clicked}) => {
+const GameBlock: React.FC<Props> = ({clicked, clickBlock}) => {
     const blockClasses = ['gameBlock']
     if (clicked) {
         blockClasses.push('blockClicked')
@@ -15,7 +17,7 @@ const GameBlock: React.FC<Props> = ({clicked}) => {
 
     return (
         <>
-            <div className={blockClasses.join(' ')}></div>
+            <div onClick={clickBlock} className={blockClasses.join(' ')}></div>
         </>
     );
 };
