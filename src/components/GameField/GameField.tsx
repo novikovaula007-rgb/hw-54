@@ -5,35 +5,46 @@ import TriesCounter from "./TriesCounter/TriesCounter.tsx";
 import ButtonReset from "./ButtonReset/ButtonReset.tsx";
 
 const createItems = () => {
-    const itemsArray: {hasItem: boolean, clicked: boolean, id: number}[] = []
+    const itemsArray: {hasItem: boolean, clicked: boolean, id: number}[] = [];
 
     for (let i = 0; i<36; i++) {
-        itemsArray.push({hasItem: false, clicked: false, id: i+1})
+        itemsArray.push({hasItem: false, clicked: false, id: i+1});
     }
-    const randomIndex = Math.floor(Math.random() * (36 - 1 + 1)) + 1
-    itemsArray[randomIndex].hasItem = true
-    return itemsArray
+
+    const randomIndex = Math.floor(Math.random() * (36 - 1 + 1)) + 1;
+    itemsArray[randomIndex].hasItem = true;
+    return itemsArray;
 }
 
 const GameField = () => {
-    const [items, setItems] = useState(createItems)
-    const [count, setCount] = useState(0)
+    const [items, setItems] = useState(createItems);
+    const [count, setCount] = useState(0);
+    const [isOver, setIsOver] = useState(false);
 
     const onClickBlock = (blockId: number) => {
-        const itemsCopy = items.map(item => {
-            if (item.id === blockId && !item.clicked) {
-                setCount(prevCount => prevCount + 1)
-                return {...item, clicked: true}
-            } else {
-                return item
-            }
-        })
-        setItems(itemsCopy)
+        if (!isOver) {
+            const itemsCopy = items.map(item => {
+                if (item.id === blockId && !item.clicked) {
+                    if (item.hasItem) {
+                        alert('You win!');
+                        setIsOver(!isOver);
+                    }
+                    setCount(prevCount => prevCount + 1);
+                    return {...item, clicked: true};
+                } else {
+                    return item;
+                }
+            })
+            setItems(itemsCopy);
+        } else {
+            alert('You need to reset the game');
+        }
     }
 
     const resetGame = () => {
-        setCount(0)
-        setItems(createItems)
+        setCount(0);
+        setIsOver(false);
+        setItems(createItems);
     }
 
     return (
