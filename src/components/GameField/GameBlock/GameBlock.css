@@ -7,3 +7,7 @@
 .blockNoClicked {
     background-color: #4d0068;
 }
+
+.blockClickedWin {
+    background: url("../../../../src/assets/star-ic.png") center center / cover no-repeat;
+}

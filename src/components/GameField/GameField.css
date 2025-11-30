@@ -1,7 +1,11 @@
-.gameField {
+.gameWrapper {
     margin: 50px 0 0 50px;
     padding: 15px;
+    display: inline-grid;
     border: 1px solid black;
+}
+
+.gameField {
     display: inline-grid;
     grid-template-columns: repeat(6, 50px);
 }

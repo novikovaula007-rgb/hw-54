@@ -7,11 +7,11 @@ interface Props {
     id: number
 }
 
-const GameBlock: React.FC<Props> = ({clicked, clickBlock}) => {
+const GameBlock: React.FC<Props> = ({clicked, clickBlock, hasItem}) => {
     const blockClasses = ['gameBlock']
-    if (clicked) {
-        blockClasses.push('blockClicked')
-    } else {
+    if (clicked && hasItem) {
+        blockClasses.push('blockClickedWin')
+    } else if (!clicked) {
         blockClasses.push('blockNoClicked')
     }
 
